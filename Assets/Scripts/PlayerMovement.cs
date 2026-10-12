@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+            Jump();
         }
 
         float mouseX = lookAction.ReadValue<Vector2>().x * mouseSensetivity;
@@ -41,8 +41,22 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
     }
 
+    void Jump()
+    {
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy Head"))
+        {
+            Destroy(collision.transform.parent.gameObject);
+            Jump();
+        }
+    }
+
     bool IsGrounded()
     {
-        return Physics.CheckSphere(groundCheck.position, 0.1f, ground);    
+    return Physics.CheckSphere(groundCheck.position, 0.1f, ground);    
     }
 }
