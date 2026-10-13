@@ -3,11 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
+    [SerializeField] AudioSource deathSound;
     bool dead = false;
 
     private void Update()
     {
-        if (transform.position.y < -2f && !dead)
+        if (transform.position.y < -3f && !dead)
         {
             Die();
             dead = true;
@@ -27,7 +28,9 @@ public class PlayerLife : MonoBehaviour
     void Die()
     {
         Invoke(nameof(ReloadLevel), 1.3f);
-        Debug.Log("Fallen Down");
+        dead = true;
+        Debug.Log("Dead");
+        deathSound.Play();
     }
 
     void ReloadLevel()

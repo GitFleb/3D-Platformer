@@ -62,9 +62,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8841653320460776148, guid: c67fcf2bf0ca9bd45aee048561b4827f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3037594542261270841}
-    - targetCorrespondingSourceObject: {fileID: 8841653320460776148, guid: c67fcf2bf0ca9bd45aee048561b4827f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6948687256508694376}
   m_SourcePrefab: {fileID: 100100000, guid: c67fcf2bf0ca9bd45aee048561b4827f, type: 3}
 --- !u!1 &1610386987107320054 stripped
@@ -72,22 +69,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8841653320460776148, guid: c67fcf2bf0ca9bd45aee048561b4827f, type: 3}
   m_PrefabInstance: {fileID: 7848334576996200994}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3037594542261270841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1610386987107320054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58dde2c7c90a7b14eb004238ff624f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WaypointFollower
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 2
 --- !u!114 &6948687256508694376
 MonoBehaviour:
   m_ObjectHideFlags: 0
