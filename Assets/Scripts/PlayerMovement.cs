@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float movementSpeed = 5f;
     [SerializeField] float jumpForce = 5f;
+
+    [SerializeField] AudioSource jumpSound;
 
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     void Jump()
     {
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+        jumpSound.Play();
     }
 
     private void OnCollisionEnter(Collision collision)
