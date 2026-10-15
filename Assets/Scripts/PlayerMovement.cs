@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask ground;
     [SerializeField] float mouseSensetivity = 0.15f;
     InputAction lookAction;
+
+    [SerializeField] Transform cameraTransform;
+    [SerializeField] private float minX;
+    [SerializeField] private float maxX;
+    private float pitch = 0f;
     void Start()
     {
         Debug.Log("PlayerMovement script has started.");  
@@ -35,7 +40,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         float mouseX = lookAction.ReadValue<Vector2>().x * mouseSensetivity;
+        float mouseY = lookAction.ReadValue<Vector2>().y * mouseSensetivity;
         transform.Rotate(0f, mouseX, 0f);
+
+        pitch -= mouseY;
+        pitch = Mathf.Clamp(pitch, minX, maxX);
+        cameraTransform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
 
         Vector3 move = (transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * movementSpeed;
         rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
