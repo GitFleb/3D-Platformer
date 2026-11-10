@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float movementSpeed = 5f;
     [SerializeField] float jumpForce = 5f;
+    [SerializeField] int jumpCount = 0;
 
     [SerializeField] AudioSource jumpSound;
 
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float pitch = 0f;
     void Start()
     {
-        Debug.Log("PlayerMovement script has started.");  
+        Debug.Log("PlayerMovement script has started.");
         rb = GetComponent<Rigidbody>();
 
         lookAction = InputSystem.actions.FindAction("Look");
@@ -39,6 +40,16 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
 
+        if (Input.GetButtonDown("Jump") && jumpCount < 1)
+        {
+            Jump();
+        }
+
+        if (IsGrounded())
+        {
+            jumpCount = 0;
+        }
+
         float mouseX = lookAction.ReadValue<Vector2>().x * mouseSensetivity;
         float mouseY = lookAction.ReadValue<Vector2>().y * mouseSensetivity;
         transform.Rotate(0f, mouseX, 0f);
@@ -55,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
         jumpSound.Play();
+        jumpCount = jumpCount +1;
+        Debug.Log("Jump count: " + jumpCount);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -68,6 +81,6 @@ public class PlayerMovement : MonoBehaviour
 
     bool IsGrounded()
     {
-    return Physics.CheckSphere(groundCheck.position, 0.1f, ground);    
+        return Physics.CheckSphere(groundCheck.position, 0.1f, ground);
     }
 }

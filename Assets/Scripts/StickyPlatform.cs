@@ -1,14 +1,30 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class StickyPlatform : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    Vector3 lastposition;
+    Rigidbody playerRb;
+
+    void Start()
+    {
+        lastposition = transform.position;
+    }
+
+    void FixedUpdate()
+    {
+        Vector3 platformMove = transform.position - lastposition;
+        if (playerRb != null)
+        {
+            playerRb.MovePosition(playerRb.position + platformMove);
+        }
+
+        lastposition = transform.position;
+    }
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(transform);
+            playerRb = collision.rigidbody;
         }
     }
 
@@ -16,7 +32,7 @@ public class StickyPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(null);
+            playerRb = null;
         }
     }
 }
