@@ -78,18 +78,15 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a6839e79dc7c5d4cbe713f7285d1301, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3592147318947856445}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a6839e79dc7c5d4cbe713f7285d1301, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4079740236522724098}
+      addedObject: {fileID: 210825130567380402}
   m_SourcePrefab: {fileID: 100100000, guid: 1a6839e79dc7c5d4cbe713f7285d1301, type: 3}
 --- !u!1 &5070530778750587558 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a6839e79dc7c5d4cbe713f7285d1301, type: 3}
   m_PrefabInstance: {fileID: 5377101353054121975}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &3592147318947856445
-BoxCollider:
+--- !u!64 &210825130567380402
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,27 +103,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.012461426, y: 0.09331472, z: 0.22521076}
-  m_Center: {x: -0.000037434518, y: -0.010499452, z: 1.0957196e-20}
---- !u!65 &4079740236522724098
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5070530778750587558}
-  m_Material: {fileID: 13400000, guid: fdaabdcfc853e044d862931fd245fd67, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.029430702, y: 0.021200644, z: 0.22521076}
-  m_Center: {x: 0.00045688514, y: 0.04632559, z: 9.676499e-19}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5018020072103033734, guid: 1a6839e79dc7c5d4cbe713f7285d1301, type: 3}
