@@ -19,10 +19,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
     private float pitch = 0f;
+    [SerializeField] private Animator _anim;
+    public bool _running;
     void Start()
     {
         Debug.Log("PlayerMovement script has started.");
         rb = GetComponent<Rigidbody>();
+        _anim = GetComponentInChildren<Animator>();
+        if (_anim is null)
+        {
+            Debug.LogError("Animator in children is NULL");
+        }
 
         lookAction = InputSystem.actions.FindAction("Look");
         Cursor.lockState = CursorLockMode.Locked;
@@ -48,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             jumpCount = 0;
+            _running = true;
         }
 
         float mouseX = lookAction.ReadValue<Vector2>().x * mouseSensetivity;
@@ -64,7 +72,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
+        _running = false;
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+        _anim.SetTrigger("Jump");
         jumpSound.Play();
         jumpCount = jumpCount +1;
         Debug.Log("Jump count: " + jumpCount);

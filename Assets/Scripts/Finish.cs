@@ -9,7 +9,7 @@ public class Finish : MonoBehaviour
         GetComponent<ItemCollecter>();
         ItemCollecter IC;
 
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.tag == "Player")
         {
             Debug.Log("Finish line crossed!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
