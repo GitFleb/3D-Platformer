@@ -55,7 +55,15 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             jumpCount = 0;
-            _running = true;
+        }
+
+        if (IsGrounded() && (horizontalInput != 0 || verticalInput != 0))
+        {
+            _anim.SetBool("_running", true);
+        }
+        else
+        {
+            _anim.SetBool("_running", false);
         }
 
         float mouseX = lookAction.ReadValue<Vector2>().x * mouseSensetivity;
