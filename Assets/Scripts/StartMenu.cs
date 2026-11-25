@@ -12,4 +12,9 @@ public class StartMenu : MonoBehaviour
     {
         Application.Quit();
     }
+    
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Start Scene");
+    }
 }

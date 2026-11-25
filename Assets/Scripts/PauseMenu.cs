@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -18,6 +17,8 @@ public class PauseMenu : MonoBehaviour
             if(Paused == true)
             { 
                 Time.timeScale = 1.0f;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 Canvas.gameObject.SetActive(false);
                 GetComponent<PlayerMovement>().enabled = true;
                 Paused = false;
@@ -26,6 +27,8 @@ public class PauseMenu : MonoBehaviour
             else
             {
                 Time.timeScale = 0.0f;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 Canvas.gameObject.SetActive(true);
                 GetComponent<PlayerMovement>().enabled = false;
                 Paused = true;
